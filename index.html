@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Localizador de Lotes e Quintas</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Biblioteca para gerar QR Code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Buscar Localização</h2>
+
+      <div class="lotesquintas-container">
+        <label for="">Lotes e Quintas: </label>
+        <div class="input-group" style="position: relative">
+          <input
+            type="text"
+            id="codigo"
+            placeholder="Ex: A01"
+            autocomplete="off"
+            oninput="mostrarSugestoes()"
+          />
+          <button onclick="buscarCoordenadas()">Buscar</button>
+
+          <!-- Popup de Sugestões -->
+          <div id="sugestoesPopup" class="sugestoes-popup hidden">
+            <ul id="sugestoesList"></ul>
+          </div>
+        </div>
+
+        <p id="erroMensagem" class="erro hidden">
+          Código não encontrado, por favor informe um código válido.
+        </p>
+      </div>
+
+      <div class="areascomuns-container">
+        <label for="areascomuns-dropdown">Áreas comuns:</label>
+        <div id="dropdown-container">
+          <select id="areascomuns-dropdown">
+            <option value="">Escolha uma área comum</option>
+            <!-- As opções serão carregadas dinamicamente aqui -->
+          </select>
+        </div>
+      </div>
+
+      <div id="resultado" class="hidden">
+        <a id="googleMapsBtn" class="btn maps" target="_blank"
+          >Abrir Google Maps</a
+        >
+        <p>ou escaneie o QR Code abaixo</p>
+        <div id="qrcodeGoogle" class="qrcode"></div>
+
+        <a id="wazeBtn" class="btn waze" target="_blank">Abrir Waze</a>
+        <p>ou escaneie o QR Code abaixo</p>
+        <div id="qrcodeWaze" class="qrcode"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

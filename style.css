@@ -1,0 +1,195 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+}
+
+.lotesquintas-container {
+  margin-bottom: 25px;
+}
+
+#dropdown-container {
+  width: 100%;
+}
+
+#areascomuns-dropdown {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: white;
+}
+
+#areascomuns-dropdown option:hover {
+  background-color: #313131; /* Cor de fundo ao passar o mouse */
+  color: white; /* Cor do texto */
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 100%;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+label {
+  text-align: left;
+  display: block;
+  margin-bottom: 8px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.erro {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.qrcode {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Botões estilizados */
+.btn {
+  display: block;
+  text-decoration: none;
+  padding: 12px;
+  margin: 10px auto;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  width: 90%;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.btn.maps {
+  margin-top: 50px;
+  background: #4285f4;
+  color: white;
+}
+
+.btn.maps:hover {
+  background: #357ae8;
+}
+
+.btn.waze {
+  margin-top: 50px;
+  background: #4285f4;
+  color: white;
+}
+
+.btn.waze:hover {
+  background: #357ae8;
+}
+
+.hidden {
+  display: none;
+}
+
+.sugestoes-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 10;
+  margin-top: 5px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.sugestoes-popup ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sugestoes-popup li {
+  padding: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sugestoes-popup li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Media Queries para Responsividade */
+/* Para telas com largura máxima de 768px (tablets e celulares em orientação paisagem) */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 400px; /* utiliza a maior parte da tela */
+    padding: 15px;
+  }
+
+  button,
+  input {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* Para telas com largura máxima de 480px (celulares) */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
