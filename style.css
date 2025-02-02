@@ -36,24 +36,33 @@ button:hover {
   background: #357ae8;
 }
 
+.conteudo {
+  max-width: 600px;
+  margin: auto;
+}
+
 .container {
   position: relative;
   background: white;
-  padding: 20px;
-  max-width: 900px;
+  padding: 10px 100px;
+  max-width: 600px;
   min-height: 95vh;
   margin: auto;
 }
 .busca-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 100px;
+  gap: 50px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .links-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 90px;
+  max-width: 100%;
 }
 
 #map {

@@ -34,7 +34,9 @@
               autocomplete="off"
               oninput="mostrarSugestoes()"
             />
-            <button onclick="buscarCoordenadas()">Buscar</button>
+            <button class="btn-buscar" onclick="buscarCoordenadas()">
+              Buscar
+            </button>
 
             <!-- Popup de Sugestões -->
             <div id="sugestoesPopup" class="sugestoes-popup hidden">
@@ -57,27 +59,28 @@
           </div>
         </div>
       </div>
-
-      <div id="resultado" class="hidden">
-        <div class="links-container">
-          <div class="links-holder">
-            <h3 class="print-block">Google Maps</h3>
-            <a id="googleMapsBtn" class="btn maps" target="_blank"
-              >Abrir Google Maps</a
-            >
-            <p>escaneie o QR Code abaixo</p>
-            <div id="qrcodeGoogle" class="qrcode"></div>
-          </div>
-          <div class="links-holder">
-            <h3 class="print-block">Waze</h3>
-            <a id="wazeBtn" class="btn waze" target="_blank">Abrir Waze</a>
-            <p>escaneie o QR Code abaixo</p>
-            <div id="qrcodeWaze" class="qrcode"></div>
+      <div class="conteudo">
+        <div id="resultado" class="hidden">
+          <div class="links-container">
+            <div class="links-holder">
+              <h3 class="print-block">Google Maps</h3>
+              <a id="googleMapsBtn" class="btn maps" target="_blank"
+                >Abrir Google Maps</a
+              >
+              <p>escaneie o QR Code abaixo</p>
+              <div id="qrcodeGoogle" class="qrcode"></div>
+            </div>
+            <div class="links-holder">
+              <h3 class="print-block">Waze</h3>
+              <a id="wazeBtn" class="btn waze" target="_blank">Abrir Waze</a>
+              <p>escaneie o QR Code abaixo</p>
+              <div id="qrcodeWaze" class="qrcode"></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="map"></div>
+        <div id="map"></div>
+      </div>
     </div>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
