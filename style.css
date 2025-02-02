@@ -255,6 +255,9 @@ button:hover {
   .links-holder {
     margin-top: 50px;
   }
+  #print-btn {
+    display: none;
+  }
 }
 
 /* Para telas com largura máxima de 480px (celulares) */
