@@ -5,59 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Localizador de Lotes e Quintas</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css"
+    />
     <!-- Biblioteca para gerar QR Code -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   </head>
   <body>
     <div class="container">
-      <h2>Buscar Localização</h2>
+      <button id="print-btn">Imprimir</button>
+      <h2>Localização Águas da Serra</h2>
+      <p class="print-block">
+        Sejam bem vindos ao nosso condomínio! Abaixo disponibilizamos dois QR
+        Codes que os guiam para o local desejado tanto pelo Google Maps como
+        pelo Waze, também há um mapa para ajudar no seu trajeto.
+      </p>
+      <h3 id="resultadoTitulo"></h3>
+      <div class="busca-container">
+        <div class="lotesquintas-container">
+          <label for="">Lotes e Quintas: </label>
+          <div class="input-group" style="position: relative">
+            <input
+              type="text"
+              id="codigo"
+              placeholder="Ex: A01"
+              autocomplete="off"
+              oninput="mostrarSugestoes()"
+            />
+            <button onclick="buscarCoordenadas()">Buscar</button>
 
-      <div class="lotesquintas-container">
-        <label for="">Lotes e Quintas: </label>
-        <div class="input-group" style="position: relative">
-          <input
-            type="text"
-            id="codigo"
-            placeholder="Ex: A01"
-            autocomplete="off"
-            oninput="mostrarSugestoes()"
-          />
-          <button onclick="buscarCoordenadas()">Buscar</button>
-
-          <!-- Popup de Sugestões -->
-          <div id="sugestoesPopup" class="sugestoes-popup hidden">
-            <ul id="sugestoesList"></ul>
+            <!-- Popup de Sugestões -->
+            <div id="sugestoesPopup" class="sugestoes-popup hidden">
+              <ul id="sugestoesList"></ul>
+            </div>
           </div>
+
+          <p id="erroMensagem" class="erro hidden">
+            Código não encontrado, por favor informe um código válido.
+          </p>
         </div>
 
-        <p id="erroMensagem" class="erro hidden">
-          Código não encontrado, por favor informe um código válido.
-        </p>
-      </div>
-
-      <div class="areascomuns-container">
-        <label for="areascomuns-dropdown">Áreas comuns:</label>
-        <div id="dropdown-container">
-          <select id="areascomuns-dropdown">
-            <option value="">Escolha uma área comum</option>
-            <!-- As opções serão carregadas dinamicamente aqui -->
-          </select>
+        <div class="areascomuns-container">
+          <label for="areascomuns-dropdown">Áreas comuns:</label>
+          <div id="dropdown-container">
+            <select id="areascomuns-dropdown">
+              <option value="">Escolha uma área comum</option>
+              <!-- As opções serão carregadas dinamicamente aqui -->
+            </select>
+          </div>
         </div>
       </div>
 
       <div id="resultado" class="hidden">
-        <a id="googleMapsBtn" class="btn maps" target="_blank"
-          >Abrir Google Maps</a
-        >
-        <p>ou escaneie o QR Code abaixo</p>
-        <div id="qrcodeGoogle" class="qrcode"></div>
-
-        <a id="wazeBtn" class="btn waze" target="_blank">Abrir Waze</a>
-        <p>ou escaneie o QR Code abaixo</p>
-        <div id="qrcodeWaze" class="qrcode"></div>
+        <div class="links-container">
+          <div class="links-holder">
+            <h3 class="print-block">Google Maps</h3>
+            <a id="googleMapsBtn" class="btn maps" target="_blank"
+              >Abrir Google Maps</a
+            >
+            <p>escaneie o QR Code abaixo</p>
+            <div id="qrcodeGoogle" class="qrcode"></div>
+          </div>
+          <div class="links-holder">
+            <h3 class="print-block">Waze</h3>
+            <a id="wazeBtn" class="btn waze" target="_blank">Abrir Waze</a>
+            <p>escaneie o QR Code abaixo</p>
+            <div id="qrcodeWaze" class="qrcode"></div>
+          </div>
+        </div>
       </div>
+
+      <div id="map"></div>
     </div>
 
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

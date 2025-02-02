@@ -3,53 +3,17 @@ body {
   text-align: center;
   background-color: #f4f4f4;
   margin: 0;
-  padding: 20px;
+  padding: 0px;
   box-sizing: border-box;
-}
-
-.container {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin: auto;
-}
-
-.lotesquintas-container {
-  margin-bottom: 25px;
-}
-
-#dropdown-container {
-  width: 100%;
-}
-
-#areascomuns-dropdown {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: white;
-}
-
-#areascomuns-dropdown option:hover {
-  background-color: #313131; /* Cor de fundo ao passar o mouse */
-  color: white; /* Cor do texto */
-}
-
-.input-group {
-  display: flex;
-  gap: 10px;
-  position: relative;
 }
 
 input {
   flex: 1;
-  padding: 8px;
+  padding: 6px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
   max-width: 100%;
+  font-size: 14px;
 }
 
 button {
@@ -72,6 +36,86 @@ button:hover {
   background: #0056b3;
 }
 
+.container {
+  position: relative;
+  background: white;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+.busca-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+
+.links-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+
+#map {
+  height: 490px;
+  max-width: 600px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#print-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ajuste do fundo da caixa de informações */
+.leaflet-routing-container {
+  background-color: transparent !important; /* Deixa o fundo transparente */
+  color: #000 !important; /* Define a cor do texto como preto */
+  box-shadow: none; /* Remove qualquer sombra */
+}
+
+/* Personalizando os marcadores (pinos de partida e chegada) */
+.leaflet-routing-icon {
+  background-color: transparent !important;
+  border: none;
+}
+
+.lotesquintas-container {
+  margin-bottom: 25px;
+}
+
+#dropdown-container {
+  width: 100%;
+}
+
+#areascomuns-dropdown {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: white;
+}
+
+#areascomuns-dropdown option:hover {
+  background-color: #313131; /* Cor de fundo ao passar o mouse */
+  color: white; /* Cor do texto */
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
 .erro {
   color: red;
   font-size: 14px;
@@ -89,18 +133,17 @@ button:hover {
 .btn {
   display: block;
   text-decoration: none;
-  padding: 12px;
+  padding: 8px;
   margin: 10px auto;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   border-radius: 6px;
-  width: 90%;
   text-align: center;
   transition: 0.3s;
 }
 
 .btn.maps {
-  margin-top: 50px;
+  margin-top: 20px;
   background: #4285f4;
   color: white;
 }
@@ -110,7 +153,7 @@ button:hover {
 }
 
 .btn.waze {
-  margin-top: 50px;
+  margin-top: 20px;
   background: #4285f4;
   color: white;
 }
@@ -154,11 +197,37 @@ button:hover {
   background-color: #f0f0f0;
 }
 
+.print-block {
+  display: none;
+}
+
+@media print {
+  #map {
+    height: 490px;
+    width: 600px;
+  }
+
+  #print-btn,
+  #googleMapsBtn,
+  #wazeBtn {
+    display: none;
+  }
+  .busca-container {
+    display: none;
+  }
+  .print-block {
+    display: block;
+  }
+}
+
 /* Media Queries para Responsividade */
 /* Para telas com largura máxima de 768px (tablets e celulares em orientação paisagem) */
 @media screen and (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
   .container {
-    max-width: 400px; /* utiliza a maior parte da tela */
+    max-width: 700px; /* utiliza a maior parte da tela */
     padding: 15px;
   }
 
@@ -170,6 +239,25 @@ button:hover {
   .btn {
     font-size: 14px;
     padding: 10px;
+  }
+  .busca-container {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .links-container {
+    display: block;
+  }
+  .links-holder {
+    margin-top: 50px;
+  }
+
+  #print-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 5px;
+    font-size: 14px;
   }
 }
 
@@ -183,13 +271,19 @@ button:hover {
     padding: 10px;
   }
 
-  .input-group {
-    flex-direction: column;
-    gap: 5px;
+  .btn {
+    font-size: 12px;
+    padding: 8px;
   }
 
-  .btn {
-    font-size: 14px;
-    padding: 10px;
+  .links-holder {
+    margin-top: 40px;
+  }
+
+  @media screen and (max-width: 380px) {
+    .input-group {
+      flex-direction: column;
+      gap: 5px;
+    }
   }
 }
