@@ -96,14 +96,14 @@ label {
   right: 10px;
 }
 
-/* Ajuste do fundo da caixa de informações */
+/* Ajuste do fundo da caixa de informações do mapa*/
 .leaflet-routing-container {
   background-color: transparent !important; /* Deixa o fundo transparente */
   color: #000 !important; /* Define a cor do texto como preto */
   box-shadow: none; /* Remove qualquer sombra */
 }
 
-/* Personalizando os marcadores (pinos de partida e chegada) */
+/* Personalizando os marcadores do mapa (pinos de partida e chegada) */
 .leaflet-routing-icon {
   background-color: transparent !important;
   border: none;
@@ -199,7 +199,7 @@ label {
   overflow-y: auto;
   width: 100%;
   z-index: 10;
-  margin-top: 5px;
+  margin-top: 1px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
