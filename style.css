@@ -101,6 +101,8 @@ label {
   background-color: transparent !important; /* Deixa o fundo transparente */
   color: #000 !important; /* Define a cor do texto como preto */
   box-shadow: none; /* Remove qualquer sombra */
+  font-size: 12px;
+  width: 130px;
 }
 
 /* Personalizando os marcadores do mapa (pinos de partida e chegada) */

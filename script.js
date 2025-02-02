@@ -32,7 +32,6 @@ function limparComponentes() {
   }
 }
 
-/// Função para criar o mapa com ponto inicial fixo e destino dinâmico
 function criarMapa(
   latitudeInicial,
   longitudeInicial,
@@ -46,11 +45,14 @@ function criarMapa(
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(mapa);
 
-  var destination = L.latLng(latitudeDestino, longitudeDestino);
-  L.marker(destination).addTo(mapa);
-  // Criando a rota entre o ponto inicial e o destino
-  L.Routing.control({
-    waypoints: [L.latLng(latitudeInicial, longitudeInicial), destination],
+  var origem = L.latLng(latitudeInicial, longitudeInicial);
+  var destino = L.latLng(latitudeDestino, longitudeDestino);
+
+  L.marker(destino).addTo(mapa);
+
+  // Criar a rota
+  var rota = L.Routing.control({
+    waypoints: [origem, destino],
     routeWhileDragging: true,
     language: "pt-BR",
     units: "metric",
@@ -59,6 +61,18 @@ function criarMapa(
       return null;
     },
   }).addTo(mapa);
+
+  // Ajusta o zoom e centraliza a rota
+  rota.on("routesfound", function (e) {
+    var bounds = L.latLngBounds([origem, destino]);
+
+    // Ajusta o zoom e centraliza a rota, com paddings
+    mapa.fitBounds(bounds, { padding: [50, 50] });
+
+    // Desloca o mapa para a direita (ajuste apenas no eixo X, mantendo Y em 0)
+    // Desloca o mapa para a direita, sem mover verticalmente
+    mapa.panBy([100, -190]);
+  });
 }
 
 // Função para gerar os links e QR codes
