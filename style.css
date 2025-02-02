@@ -19,7 +19,7 @@ input {
 button {
   padding: 8px 15px;
   border: none;
-  background: #007bff;
+  background: #4285f4;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -33,7 +33,7 @@ label {
 }
 
 button:hover {
-  background: #0056b3;
+  background: #357ae8;
 }
 
 .container {
@@ -70,9 +70,10 @@ button:hover {
   top: 10px;
   right: 10px;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  font-weight: 700;
+  background-color: #ececec;
+  color: rgba(51, 51, 51, 0.685);
+  border: solid rgba(0, 0, 0, 0.033) 2px;
   cursor: pointer;
 }
 
@@ -147,6 +148,7 @@ button:hover {
   margin-top: 20px;
   background: #4285f4;
   color: white;
+  max-width: 200px;
 }
 
 .btn.maps:hover {
@@ -157,6 +159,7 @@ button:hover {
   margin-top: 20px;
   background: #4285f4;
   color: white;
+  max-width: 200px;
 }
 
 .btn.waze:hover {
@@ -242,7 +245,7 @@ button:hover {
   }
 
   .btn {
-    font-size: 14px;
+    font-size: 16px;
     padding: 10px;
   }
   .busca-container {
@@ -257,6 +260,10 @@ button:hover {
     margin-top: 50px;
   }
   #print-btn {
+    display: none;
+  }
+
+  #map {
     display: none;
   }
 }
