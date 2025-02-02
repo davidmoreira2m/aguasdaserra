@@ -225,7 +225,8 @@ button:hover {
 
   #print-btn,
   #googleMapsBtn,
-  #wazeBtn {
+  #wazeBtn,
+  .label-qrcode {
     display: none;
   }
   .busca-container {
