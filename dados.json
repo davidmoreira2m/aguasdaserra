@@ -748,13 +748,14 @@
   },
 
   "areascomuns": {
+    "Arena de beach tênis": { "latitude": -6.729433, "longitude": -35.629901 },
+    "Academia": { "latitude": -6.731588, "longitude": -35.63086 },
+    "Campo de futebol": { "latitude": -6.729987, "longitude": -35.630151 },
+    "Campo de golf": { "latitude": -6.72551, "longitude": -35.630045 },
+    "Capela": { "latitude": -6.730431, "longitude": -35.631631 },
+    "Haras": { "latitude": -6.730114, "longitude": -35.631725 },
     "Piscina": { "latitude": -6.731141, "longitude": -35.630564 },
     "Quadras de tênis": { "latitude": -6.729665, "longitude": -35.62992 },
-    "Arena de beach tênis": { "latitude": -6.729433, "longitude": -35.629901 },
-    "campo de futebol": { "latitude": -6.729987, "longitude": -35.630151 },
-    "Salão de festas": { "latitude": -6.731488, "longitude": -35.630803 },
-    "Academia": { "latitude": -6.731588, "longitude": -35.63086 },
-    "Capela": { "latitude": -6.730431, "longitude": -35.631631 },
-    "Haras": { "latitude": -6.730114, "longitude": -35.631725 }
+    "Salão de festas": { "latitude": -6.731488, "longitude": -35.630803 }
   }
 }
