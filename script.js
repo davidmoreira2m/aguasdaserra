@@ -19,23 +19,16 @@ async function carregarDados() {
 
 // Função para limpar todos os componentes antes de atualizar
 function limparComponentes() {
-  // Limpar erro de mensagem, se houver
   document.getElementById("erroMensagem").classList.add("hidden");
-
-  // Esconde o popup de sugestões
   document.getElementById("sugestoesPopup").classList.add("hidden");
-
-  // Esconde o resultado com links e QR codes
   document.getElementById("resultado").classList.add("hidden");
-
-  // Limpa QR codes anteriores
   document.getElementById("qrcodeGoogle").innerHTML = "";
   document.getElementById("qrcodeWaze").innerHTML = "";
 
   // Limpa o conteúdo do mapa (Destruir o mapa existente, se houver)
   if (mapa) {
-    mapa.remove(); // Remove o mapa anterior
-    mapa = null; // Limpa a variável para evitar problemas na próxima renderização
+    mapa.remove();
+    mapa = null;
   }
 }
 
@@ -46,31 +39,25 @@ function criarMapa(
   latitudeDestino,
   longitudeDestino
 ) {
-  // Cria o mapa com o ponto inicial fixo
   mapa = L.map("map").setView([latitudeInicial, longitudeInicial], 16);
 
-  // Adicionando a camada do OpenStreetMap
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(mapa);
 
-  // Criando o ponto de destino com as coordenadas do código informado ou área comum
   var destination = L.latLng(latitudeDestino, longitudeDestino);
-
-  // Criando o marcador apenas para o destino
   L.marker(destination).addTo(mapa);
-
   // Criando a rota entre o ponto inicial e o destino
   L.Routing.control({
-    waypoints: [L.latLng(latitudeInicial, longitudeInicial), destination], // Definindo o ponto inicial fixo e o destino
-    routeWhileDragging: true, // Permite mover a rota durante a navegação
-    language: "pt-BR", // Configurando idioma para português
-    units: "metric", // Configura as unidades como métricas (metros, quilômetros)
-    showAlternatives: false, // Não exibe alternativas de rota
+    waypoints: [L.latLng(latitudeInicial, longitudeInicial), destination],
+    routeWhileDragging: true,
+    language: "pt-BR",
+    units: "metric",
+    showAlternatives: false,
     createMarker: function () {
       return null;
-    }, // Impede a criação de marcadores adicionais (como o marcador do ponto inicial)
+    },
   }).addTo(mapa);
 }
 
@@ -81,21 +68,19 @@ function gerarLinksEQRcodes(latitudeDestino, longitudeDestino) {
 
   document.getElementById("googleMapsBtn").href = googleMapsUrl;
   document.getElementById("wazeBtn").href = wazeUrl;
-
-  // Limpa QR Codes anteriores e gera novos
   document.getElementById("qrcodeGoogle").innerHTML = "";
   document.getElementById("qrcodeWaze").innerHTML = "";
 
   new QRCode(document.getElementById("qrcodeGoogle"), {
     text: googleMapsUrl,
-    width: 200, // Define o tamanho do QR Code
-    height: 200, // Mantém a altura proporcional
+    width: 200,
+    height: 200,
   });
 
   new QRCode(document.getElementById("qrcodeWaze"), {
     text: wazeUrl,
-    width: 200, // Define o tamanho do QR Code
-    height: 200, // Mantém a altura proporcional
+    width: 200,
+    height: 200,
   });
 }
 
@@ -105,12 +90,12 @@ async function buscarCoordenadas() {
   if (!dados) return;
 
   let codigo = document.getElementById("codigo").value.trim().toUpperCase();
+  console.log(codigo);
+  document.getElementById("resultadoTitulo").textContent = "Destino: " + codigo;
   document.getElementById("codigo").value = codigo;
 
-  // Limpar todos os componentes antes de atualizar
   limparComponentes();
 
-  // Busca o local em "lotes" ou "quintas"
   const local = dados.lotes[codigo] || dados.quintas[codigo];
 
   if (!local) {
@@ -118,32 +103,23 @@ async function buscarCoordenadas() {
     document.getElementById("resultado").classList.add("hidden");
     return;
   }
-
   document.getElementById("erroMensagem").classList.add("hidden");
 
   // Usando as coordenadas fixas como ponto inicial
   const latitudeInicial = -6.737965;
   const longitudeInicial = -35.628685;
-
   // Pega as coordenadas do destino do código (exemplo: do local em "lotes" ou "quintas")
   const latitudeDestino = local.latitude;
   const longitudeDestino = local.longitude;
 
-  // Criar o mapa com o ponto inicial fixo e destino dinâmico
   criarMapa(
     latitudeInicial,
     longitudeInicial,
     latitudeDestino,
     longitudeDestino
   );
-
-  // Gerar os links e QR Codes para Google Maps e Waze
   gerarLinksEQRcodes(latitudeDestino, longitudeDestino);
-
-  // Exibir o resultado (links e QR codes)
   document.getElementById("resultado").classList.remove("hidden");
-
-  // Resetar o dropdown
   document.getElementById("areascomuns-dropdown").selectedIndex = 0;
 }
 
@@ -151,7 +127,6 @@ async function buscarCoordenadas() {
 async function mostrarSugestoes() {
   const dados = await carregarDados();
   if (!dados) return;
-
   let input = document.getElementById("codigo").value.trim().toUpperCase();
 
   // Se não houver nada digitado, oculta o popup de sugestões
@@ -159,7 +134,6 @@ async function mostrarSugestoes() {
     document.getElementById("sugestoesPopup").classList.add("hidden");
     return;
   }
-
   // Filtra os códigos em lotes e quintas que começam com o texto digitado
   const sugestoesLotes = Object.keys(dados.lotes).filter(
     (cod) => cod.startsWith(input) && cod !== input
@@ -169,7 +143,6 @@ async function mostrarSugestoes() {
   );
 
   const sugestoes = [...sugestoesLotes, ...sugestoesQuintas];
-
   exibirSugestoes(sugestoes);
 }
 
@@ -178,7 +151,6 @@ function exibirSugestoes(sugestoes) {
   const sugestoesPopup = document.getElementById("sugestoesPopup");
   const sugestoesList = document.getElementById("sugestoesList");
 
-  // Limpa as sugestões anteriores
   sugestoesList.innerHTML = "";
 
   if (sugestoes.length === 0) {
@@ -193,10 +165,8 @@ function exibirSugestoes(sugestoes) {
     li.onclick = () => selecionarSugestao(sugestao);
     sugestoesList.appendChild(li);
   });
-
   // Força o scroll para o topo do popup sempre que ele for exibido
   sugestoesPopup.scrollTop = 0;
-
   // Exibe o popup de sugestões
   sugestoesPopup.classList.remove("hidden");
 }
@@ -207,7 +177,6 @@ function selecionarSugestao(sugestao) {
   document.getElementById("resultadoTitulo").textContent =
     "Destino: " + document.getElementById("codigo").value;
   document.getElementById("resultadoTitulo").classList.add("print-block");
-
   document.getElementById("sugestoesPopup").classList.add("hidden");
   // Chama a busca automaticamente após a seleção
   buscarCoordenadas();
@@ -232,8 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
       for (let area in data.areascomuns) {
         if (data.areascomuns.hasOwnProperty(area)) {
           const option = document.createElement("option");
-          option.value = area; // A chave como valor
-          option.textContent = area.charAt(0).toUpperCase() + area.slice(1); // Capitaliza o nome da área
+          option.value = area;
+          option.textContent = area.charAt(0).toUpperCase() + area.slice(1);
           dropdown.appendChild(option);
         }
       }
@@ -254,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Destino: " + areaSelecionada;
       document.getElementById("resultadoTitulo").classList.add("print-block");
       if (areaSelecionada) {
-        // Limpar os componentes antes de atualizar
         limparComponentes();
 
         // Obtém as coordenadas da área comum selecionada
