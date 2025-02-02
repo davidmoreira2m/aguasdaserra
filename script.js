@@ -205,7 +205,7 @@ function exibirSugestoes(sugestoes) {
 function selecionarSugestao(sugestao) {
   document.getElementById("codigo").value = sugestao;
   document.getElementById("resultadoTitulo").textContent =
-    "Lote/Quinta: " + document.getElementById("codigo").value;
+    "Destino: " + document.getElementById("codigo").value;
   document.getElementById("resultadoTitulo").classList.add("print-block");
 
   document.getElementById("sugestoesPopup").classList.add("hidden");
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const areaSelecionada = this.value;
       document.getElementById("resultadoTitulo").textContent =
-        "Área Comum: " + areaSelecionada;
+        "Destino: " + areaSelecionada;
       document.getElementById("resultadoTitulo").classList.add("print-block");
       if (areaSelecionada) {
         // Limpar os componentes antes de atualizar
