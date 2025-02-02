@@ -56,7 +56,7 @@ button:hover {
 }
 
 #map {
-  height: 490px;
+  height: 450px;
   max-width: 600px;
   margin-top: 30px;
   margin-left: auto;
@@ -203,7 +203,7 @@ button:hover {
 
 @media print {
   #map {
-    height: 490px;
+    height: 450px;
     width: 600px;
   }
 
@@ -250,14 +250,6 @@ button:hover {
   }
   .links-holder {
     margin-top: 50px;
-  }
-
-  #print-btn {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    padding: 5px 5px;
-    font-size: 14px;
   }
 }
 
