@@ -91,7 +91,6 @@ async function buscarCoordenadas() {
 
   let codigo = document.getElementById("codigo").value.trim().toUpperCase();
   console.log(codigo);
-  document.getElementById("resultadoTitulo").textContent = "Destino: " + codigo;
   document.getElementById("codigo").value = codigo;
 
   limparComponentes();
@@ -121,6 +120,7 @@ async function buscarCoordenadas() {
   gerarLinksEQRcodes(latitudeDestino, longitudeDestino);
   document.getElementById("resultado").classList.remove("hidden");
   document.getElementById("areascomuns-dropdown").selectedIndex = 0;
+  document.getElementById("resultadoTitulo").textContent = "Destino: " + codigo;
 }
 
 // Função para mostrar sugestões conforme o usuário digita
