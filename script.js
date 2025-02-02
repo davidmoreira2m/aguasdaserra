@@ -71,7 +71,7 @@ function criarMapa(
 
     // Desloca o mapa para a direita (ajuste apenas no eixo X, mantendo Y em 0)
     // Desloca o mapa para a direita, sem mover verticalmente
-    mapa.panBy([100, -190]);
+    mapa.panBy([30, -200]);
   });
 }
 

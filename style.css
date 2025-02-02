@@ -102,7 +102,8 @@ label {
   color: #000 !important; /* Define a cor do texto como preto */
   box-shadow: none; /* Remove qualquer sombra */
   font-size: 12px;
-  width: 130px;
+  width: 200px !important;
+  max-height: 400px !important;
 }
 
 /* Personalizando os marcadores do mapa (pinos de partida e chegada) */
