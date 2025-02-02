@@ -1,6 +1,9 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
   text-align: center;
+  font-style: normal;
   background-color: #ffffff;
   margin: 0px;
   padding: 0px;
@@ -71,6 +74,10 @@ button:hover {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+.label-qrcode {
+  font-size: 15px;
 }
 
 #print-btn {
