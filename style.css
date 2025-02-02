@@ -202,8 +202,12 @@ button:hover {
 }
 
 @media print {
+  .container {
+    padding: 0px;
+  }
+
   #map {
-    height: 450px;
+    height: 440px;
     width: 600px;
   }
 
